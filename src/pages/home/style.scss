@@ -1,0 +1,28 @@
+
+
+#main_page {
+    display: flex;
+    width: 100%;
+    background: #ECECEE;
+    justify-content: space-between;
+    height: 100vh;
+    // background-color: #e5e5e5;
+    // min-width: 1280px;
+    // display: flex;
+    // min-height: 100vh;
+    .left_main {
+        width: 228px;
+        overflow-x: hidden;
+        height: 100vh;
+    }
+    .right_main {
+        width: calc(100% - 228px);
+        box-sizing: border-box;
+      
+    }
+    .content {
+         margin: 0 10px;
+        
+    }
+}
+

@@ -1,0 +1,28 @@
+#breacrumb {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    margin: 0px 16px;
+    .icon_ {
+        width: 16px;
+        height: 16px;
+        margin: 0 5px;
+    }
+    .item_ {
+        display: flex;
+        align-items: center;
+
+    }
+    .titel-breabum{
+        font-weight: bold;
+        font-size: 16px;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        
+    }
+    
+    
+}

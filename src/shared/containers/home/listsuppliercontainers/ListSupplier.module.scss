@@ -1,0 +1,128 @@
+.title_text {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.title2_text {
+    font-weight: bold;
+    font-size: 18px;
+    // margin-left: 10px;
+}
+
+
+.HomeContainer{
+    // width: 1130px;
+}
+.reset_btn{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    width: 74px;
+    height: 16px;
+
+}
+.btn-edit{
+    border: none;
+    outline: none;
+    .text-success{
+        color: "#72d563F";
+    }
+}
+.btn_action_table {
+    width: 110px;
+    button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 30px;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background: none;
+        &:hover {
+            background-color: #F7F7F7;
+        }
+    }
+    
+}
+.btn-edit-detele{
+    border: none;
+    outline: none;
+    cursor: "pointer";
+    background: none;
+
+}
+ .title-custom-notifi{
+    display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 218px;
+height: 28px;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-left: 15px;
+.tite-notifi{
+    width: 128px;
+    height: 16px;
+   font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.012em;
+    color: #131313;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.btn-notifi-titel{
+    display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 4px;
+gap: 10px;
+
+width: 68px;
+height: 28px;
+
+background: #D8D7D7;
+border-radius: 3px;
+flex: none;
+order: 2;
+flex-grow: 0;
+border: none;
+outline: none;
+.span-btn{
+
+width: 60px;
+height: 16px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+text-align: center;
+letter-spacing: 0.012em;
+color: #333333;
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+}
+}

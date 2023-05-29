@@ -1,0 +1,198 @@
+.addsupplier-containers {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #FFFFFF;
+    margin: 10px 10px;
+    padding: 20px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    flex-direction: column;
+
+    //  height: 10px;
+    .title-custom-notifi {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px;
+        gap: 10px;
+
+        width: 218px;
+        height: 28px;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin-left: 15px;
+    }
+
+    .tite-notifi {
+        width: 128px;
+        height: 16px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.012em;
+        color: #131313;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+    }
+
+    .btn-notifi-titel {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 4px;
+        gap: 10px;
+
+        width: 68px;
+        height: 28px;
+
+        background: #D8D7D7;
+        border-radius: 3px;
+        flex: none;
+        order: 2;
+        flex-grow: 0;
+        border: none;
+        outline: none;
+
+        .span-btn {
+            width: 60px;
+            height: 16px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: 0.012em;
+            color: #333333;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+    }
+
+    .fromaddsupplier {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 10px;
+        // width: 1078px;
+        height: 60px;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+
+        ._notedtt {
+            color: #FF3434;
+            margin-top: 5px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    .footer-left {
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        a,
+        button {
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .reset_btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 5px 0px 0px;
+            border: none;
+            background-color: #fff;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ded8d8;
+                ;
+            }
+        }
+
+    }
+
+    .footer-right {
+        width: 899px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .footer-right-btn-detele {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 15px;
+            gap: 10px;
+            width: 90px;
+            height: 32px;
+            border: 1px solid #FF3434;
+            border-radius: 3px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            background-color: #FFFFFF;
+
+            .footer-right-text-detele {
+                color: #FF3434;
+            }
+        }
+
+        .footer-right-btn-update {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 16px;
+            gap: 10px;
+            width: 90px;
+            height: 32px;
+            background: #138300;
+            border-radius: 3px;
+            flex: none;
+            order: 11;
+            align-self: stretch;
+            flex-grow: 0;
+            margin-left: 15px;
+
+            .footer-right-text-update {
+                width: 58px;
+                height: 20px;
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 20px;
+                text-align: center;
+                letter-spacing: 0.012em;
+                color: #FFFFFF;
+                flex: none;
+                order: 0;
+                flex-grow: 0;
+            }
+        }
+    }
+
+}

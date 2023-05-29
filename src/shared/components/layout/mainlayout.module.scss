@@ -1,0 +1,7 @@
+.MainLayout{
+    overflow: scroll;
+    overflow-y: auto;
+    height: calc(100vh - 50px);
+    width: 100%;
+    box-sizing: border-box;
+}
