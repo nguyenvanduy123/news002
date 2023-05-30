@@ -45,11 +45,13 @@ const AppReducer = (state = initialState, action) =>
                         }
                 };
                 case AppAction.FETCH_GET_CATE_SUCCESS:
+                    
                 var categorysearch = []
                 if(cate.value){
                     categorysearch = action.payload.filter((item,indexl)=>{
                         let searchinputcate = cate.value!=""?item.name.toLowerCase().includes(cate.value.toLowerCase().trim()):true
-                            return searchinputcate
+                            
+                        return searchinputcate
 
                     })
                 }else{

@@ -7,7 +7,7 @@ let initialState = {
     loadingAppPopup: false,
     codeDaTa: {
         loading: false,
-        code: {}
+        codeda: {}
     },
     
 };
@@ -36,7 +36,7 @@ const AppReducer = (state = initialState, action) =>
                 loadingAppPopup: false,
             };
         case AppAction.FETCH_GET_CODE:
-
+           
             return {
                 ...state,
                 codeDaTa: {
@@ -45,15 +45,16 @@ const AppReducer = (state = initialState, action) =>
                 },
             };
         case AppAction.FETCH_GET_CODE_SUCCESS:
-
-            return {
-                ...state,
-                codeDaTa: {
-                    ...state.codeDaTa,
-                    code: action.payload,
-                    loading: false,
-                },
-            };
+          
+          
+                return{
+                    ...state,
+                    codeDaTa:{
+                        ...state.codeDaTa,
+                        cate:action.payload,
+                        loading:false,
+                    }
+                };
            
 
         default:

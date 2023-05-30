@@ -11,7 +11,7 @@ function* fetchcode()
         
         try {
             const response = yield call(() =>
-                factories.fetchcode(payload),
+                factories.fetchcodegetdata(payload),
             );
 
             yield put({

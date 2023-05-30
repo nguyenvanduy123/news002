@@ -2,7 +2,7 @@ import ApiConstants from 'adapter/ApiConstants';
 import ApiOperation from 'adapter/ApiOperation';
 
 const AppFactory = {
-    fetchcode: async (data) =>
+    fetchcodegetdata: async (data) =>
     {
        
         return ApiOperation.request({
@@ -12,13 +12,7 @@ const AppFactory = {
         });
         
     },
-    updateSample: (data) =>
-    {
-        return {
-            Data: {}
-        };
-      
-    },
+    
 }
 
 export default AppFactory

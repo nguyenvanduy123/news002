@@ -35,11 +35,14 @@ import CodeAction from 'redux/code/action'
 function AddsupplierContainer(props) {
     let history = useHistory();
     let location = useLocation();
+    ///
+    const [saveid, setsaveid]=useState("");
+    
     ////dữ liệu api thành phố
     const { provin } = useSelector(state => state.Province.provinceData);
-   
-     ///gét dữ liệu api tỉnh thành
-     useEffect(() => {
+
+    ///gét dữ liệu api tỉnh thành
+    useEffect(() => {
 
         dispatch({
             type: Provideraction.FETCH_GET_PROVINCE,
@@ -59,116 +62,117 @@ function AddsupplierContainer(props) {
             }
         }
     }, [provin])
-    const [datadistrict , setdatadistrict] = useState([{id:"",name:"Không có dữ liệu"}]);
-   
-///dữ lieej api quận huyện
-const {district} =useSelector(state => state.District.districtData);
+    const [datadistrict, setdatadistrict] = useState([{ id: "", name: "Không có dữ liệu" }]);
 
-useEffect(()=>{
-    dispatch({
-        type: Districtaction.FETCH_GET_DISTRICT,
-        payload: {
-            district: {}
-        }
-    })
-},[])
-useEffect(()=>{
-    if(Array.isArray(district)){
-        setdatadistrict(district);
-        for (let v in district) {
-            if (district[v].name == district) {
-                setrecotdata(district[v])
-            }
-        }
-    }
+    ///dữ lieej api quận huyện
+    const { district, districtID } = useSelector(state => state.District.districtData);
     
-},[district])
-////xã phường
-const [Optionsward ,setOptionsward]= useState([])
-  const {wardsdata} = useSelector(state => state.Wards.WardsDataaction);
- 
-useEffect(()=>{
-    dispatch({
-        type: Wardsaction.FETCH_GET_WARDS,
-        payload: {
-            wards: {}
-        }
-    })
-},[])
-useEffect(()=>{
-    if(Array.isArray(wardsdata)){
-        setOptionsward(wardsdata);
-        for(let a in wardsdata){
-          
-            if(wardsdata[a].name == wardsdata){
-                setrecotdata(wardsdata[a])
+    const [datadistrictid, setdatadistrictid] = useState(districtID)
+    
+    useEffect(() => {
+        dispatch({
+            type: Districtaction.FETCH_GET_DISTRICT,
+            payload: {
+                district: {}
+            }
+        })
+    }, [])
+    useEffect(() => {
+        if (Array.isArray(districtID)) {
+            setdatadistrict(districtID);
+            for (let v in districtID) {
+                if (districtID[v].name == districtID) {
+                    setrecotdata(districtID[v])
+                }
             }
         }
-    }
-},[wardsdata])
-///category
-const [Optionscate,setOptionscate] = useState([])
-const {cate} = useSelector(state => state.Cate.categoryDaTa);
 
-useEffect(()=>{
-    dispatch({
-        type: CategoryAction.FETCH_GET_CATE,
-        payload: {
-            cate: {}
-        }
-    })
+    }, [districtID])
+    ////xã phường
+    const [Optionsward, setOptionsward] = useState([])
+    const { wardsdata } = useSelector(state => state.Wards.WardsDataaction);
 
-},[])
-useEffect(()=>{
-    if(Array.isArray(cate)){
-        setOptionscate(cate);
-        for(let a in cate){
-          
-            if(cate[a].name == cate){
-                setrecotdata(cate[a])
+    useEffect(() => {
+        dispatch({
+            type: Wardsaction.FETCH_GET_WARDS,
+            payload: {
+                wards: {}
+            }
+        })
+    }, [])
+    useEffect(() => {
+        if (Array.isArray(wardsdata)) {
+            setOptionsward(wardsdata);
+            for (let a in wardsdata) {
+
+                if (wardsdata[a].name == wardsdata) {
+                    setrecotdata(wardsdata[a])
+                }
             }
         }
-    }
-},[cate])
-///
-const {code} =useSelector(state=>state.Code.codeDaTa);
-const [Optionscode,setOptionscode] = useState([])
-useEffect(()=>{
-    dispatch({
-        type: CodeAction.FETCH_GET_CODE,
-        payload: {
-            code: {}
-        }
-    })
+    }, [wardsdata])
+    ///category
+    const [Optionscate, setOptionscate] = useState([])
+    const { cate } = useSelector(state => state.Cate.categoryDaTa);
 
-},[])
-useEffect(()=>{
-    if(Array.isArray(code)){
-        setOptionscode(code);
-        for(let a in code){
-          
-            if(code[a].name == code){
-                setrecotdata(code[a])
+    useEffect(() => {
+        dispatch({
+            type: CategoryAction.FETCH_GET_CATE,
+            payload: {
+                cate: {}
+            }
+        })
+
+    }, [])
+    useEffect(() => {
+        if (Array.isArray(cate)) {
+            setOptionscate(cate);
+            for (let a in cate) {
+
+                if (cate[a].name == cate) {
+                    setrecotdata(cate[a])
+                }
             }
         }
-    }
-},[code])
-///code
+    }, [cate])
+    ///
+    const { codeda } = useSelector(state => state.Code.codeDaTa);
+    const [Optionscode, setOptionscode] = useState([])
+    useEffect(() => {
+        dispatch({
+            type: CodeAction.FETCH_GET_CODE,
+            payload: {
+                code: {}
+            }
+        })
 
-const [recotdata, setrecotdata] = useState([]);
+    }, [])
+    useEffect(() => {
+        if (Array.isArray(codeda)) {
+            setOptionscode(codeda);
+            for (let a in codeda) {
 
-let recotda = history.location.state
+                if (codeda[a].name == codeda) {
+                    setrecotdata(codeda[a])
+                }
+            }
+        }
+    }, [codeda])
+    ///code
+
+    const [recotdata, setrecotdata] = useState([]);
+
+    let recotda = history.location.state
 
     const [Optionsprovice, setOptionsprovice] = useState([]);
-    
+
     const [Optionstatus, setOptionstatus] = useState([]);
     const dispatch = useDispatch();
     let { id } = useParams();
-    
-    const { data} = useSelector(state => state.Supplier.supplierData)
-   
-    useEffect(() =>
-    {
+
+    const { data } = useSelector(state => state.Supplier.supplierData)
+
+    useEffect(() => {
         dispatch({
             type: SupplierAction.FETCH_GET_DATA_ID,
             payload: {
@@ -176,8 +180,8 @@ let recotda = history.location.state
             }
         })
     }, [])
-    
-   
+
+
 
     useEffect(() => {
 
@@ -186,26 +190,27 @@ let recotda = history.location.state
         }
     }, []);
     const chaneChangeText = (e, tyle = "") => {
-        
+
         if (e.target) {
             let name = e.target.name;
             let value = e.target.value;
             setrecotdata({ ...recotdata, [name]: value })
 
         } else {
-            if (tyle !="status") {
+            if (tyle != "status") {
                 setrecotdata({ ...recotdata, [tyle]: e.name })
-                
-                if(tyle=="provin"){
-                    
+
+                if (tyle == "provin") {
+
                     dispatch({
-                        type: Districtaction.FETCH_GET_DISTRICT,
+                        type: Districtaction.FETCH_GET_DISTRICT_ID,
                         payload: {
-                            data: e.id
+                            distr: { district, idpro: e.id ,idnew:saveid}
                         }
                     })
-                }else if(tyle=="distri"){
-                  
+                    setsaveid(e.id);
+                } else if (tyle == "distri") {
+
                     dispatch({
                         type: Wardsaction.FETCH_GET_WARDS,
                         payload: {
@@ -214,8 +219,8 @@ let recotda = history.location.state
                     })
 
                 }
-            }else if(tyle=="status"){
-                setrecotdata({ ...recotdata, [tyle]: e.id }) 
+            } else if (tyle == "status") {
+                setrecotdata({ ...recotdata, [tyle]: e.id })
             }
         }
 
@@ -232,10 +237,10 @@ let recotda = history.location.state
         }))
     }
     const setsave = (e) => {
-            
+
         if (e.Name && e.cate && e.codeCN && e.distri && e.email && e.phone && e.provin && e.war) {
             if (id) {
-                
+
                 dispatch({
                     type: SupplierAction.FETCH_UPDATE_DATA,
                     payload: {
@@ -281,11 +286,11 @@ let recotda = history.location.state
 
     }
     ///api status
-    const {status} = useSelector(state =>state.Status.statusdata)
-  
-    
+    const { status } = useSelector(state => state.Status.statusdata)
 
-    useEffect(()=>{
+
+
+    useEffect(() => {
         dispatch({
             type: Statusaction.FETCH_GET_STATUS,
             payload: {
@@ -293,43 +298,70 @@ let recotda = history.location.state
             }
 
         })
-    },[])
+    }, [])
     useEffect(() => {
-        
+
         if (Array.isArray(status)) {
-            
+
             setOptionstatus(status)
-            for(let a in status){
-          
-                if(status[a].name == status){
+            for (let a in status) {
+
+                if (status[a].name == status) {
                     setrecotdata(status[a])
                 }
             }
         }
     }, [status])
     ///
-    const [ valueinputsearch , setvalueseacrch]= useState({})
-    const [ valuesearchinput , setvaluesearchinput]= useState({})
-    const onchangeseach=((e)=>{
-        
-        if(e.target){
+    const [valueinputsearch, setvalueseacrch] = useState("")
+    const [valuesearchinput, setvaluesearchinput] = useState("")
+    const onchangeseach = ((e, tyle) => {
+
+        if (e.target) {
             let name = e.target.name;
-            
             let value = e.target.value;
-            setvalueseacrch({...valuesearchinput,[name]:value})
-            dispatch({
-                type: CategoryAction.FETCH_GET_CATE,
-                payload: {
-                    cate: value
-                }
-            })
+            setvalueseacrch({ ...valuesearchinput, [name]: value })
+            ///danh mục
+            if (tyle == "cate") {
+                dispatch({
+                    type: CategoryAction.FETCH_GET_CATE,
+                    payload: {
+                        cate: value
+                    }
+                })
+            } else if (tyle == "provin") {
+                dispatch({
+                    type: Provideraction.FETCH_GET_PROVINCE,
+                    payload: {
+                        provin: value
+                    }
+                })
+            } else if (tyle == "codeCN") {
+
+                dispatch({
+                    type: CodeAction.FETCH_GET_CODE,
+                    payload: {
+                        codealo: value
+                    }
+                })
+            } else if (tyle == "distri") {
+                dispatch({
+                    type: Districtaction.FETCH_GET_DISTRICT_ID,
+                    payload: {
+                        distr: { district:district, search: value ,idproset:saveid }
+                    }
+                })
+            }
+
+
         }
-      
-       
+
+
     })
 
+
     return <div className={style["addsupplier-containers"]}>
-        <form onSubmit={handleSubmit(onSubmit)} style={{width: "100%"}}>
+        <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
             <ToastContainer ></ToastContainer>
             <FormAdd title={<span>Thông Tin Nhà Cung Cấp</span>}>
                 <div className={style["fromaddsupplier"]}>
@@ -397,10 +429,11 @@ let recotda = history.location.state
                                                 icon='images/icon-statuscenter.svg'
                                                 iconclone='images/icon-close.svg'
                                                 value={recotdata.cate ? recotdata.cate : ""}
-                                                valuetest={valueinputsearch.cate?valueinputsearch.cate:""}
+                                                valuetest={valueinputsearch.cate ? valueinputsearch.cate : ""}
                                                 onChange={(e) => { chaneChangeText(e, "cate"); onChange(e.value); }
                                                 }
-                                                change={(e)=>{onchangeseach(e)}}
+                                                change={(e) => { onchangeseach(e, 'cate') }}
+                                                resetchange={(e) => { changreset(e, 'cate') }}
                                                 isHover={true}
                                                 style={{
                                                     border: recotdata.cate ? "" : errors.cate
@@ -521,22 +554,23 @@ let recotda = history.location.state
                                                 Options={Optionscode}
                                                 icon='images/icon-statuscenter.svg'
                                                 iconclone='images/icon-close.svg'
-                                                    value={recotdata.codeCN}
-                                        onChange={(e) => {
-                                            chaneChangeText(e, "codeCN"),
-                                                onChange(e.value,)
-                                        }}
-                                        change={(e)=>{onchangeseach(e)}}
-                                        style={{
-                                            border: recotdata.codeCN ? "" : errors.cate
-                                                ? '1px solid #FF3434'
-                                                : '1px solid #ACACAC',
-                                        }}
+                                                value={recotdata.codeCN ? recotdata.codeCN : ""}
+                                                valuetest={valueinputsearch.codeCN ? valueinputsearch.codeCN : ""}
+                                                onChange={(e) => {
+                                                    chaneChangeText(e, "codeCN"),
+                                                        onChange(e.value,)
+                                                }}
+                                                change={(e) => { onchangeseach(e, 'codeCN') }}
+                                                style={{
+                                                    border: recotdata.codeCN ? "" : errors.cate
+                                                        ? '1px solid #FF3434'
+                                                        : '1px solid #ACACAC',
+                                                }}
                                             />
                                         </div>
 
                                     </DropdownItem>
-                                    
+
                                 );
                             }}
                             name="codeCN"
@@ -585,7 +619,7 @@ let recotda = history.location.state
                     </div>
                 </div>
                 <div className={style["fromaddsupplier"]}>
-                    <div style={{width:"346px"}}>
+                    <div style={{ width: "346px" }}>
                         <Controller
                             control={control}
                             rules={{ required: true, }}
@@ -597,28 +631,29 @@ let recotda = history.location.state
                                     <DropdownItem
                                         title="Tỉnh/ Thành phố"
                                         valide="*"
-                                        >
+                                    >
                                         <div className={style[""]}>
                                             <Dropdownadd placeholder={"Tỉnh/ Thành phố"} id="provin" name="provin"
                                                 Options={Optionsprovice}
                                                 icon='images/icon-statuscenter.svg'
                                                 iconclone='images/icon-close.svg'
-                                                value={recotdata.provin}
-                                           onChange={(e) => {
-                                            chaneChangeText(e, "provin"),
-                                                onChange(e.value,)
-                                        }}
-                                        change={(e)=>{onchangeseach(e)}}
-                                        style={{
-                                            border: recotdata.provin ? "" : errors.provin
-                                                ? '1px solid #FF3434'
-                                                : '1px solid #ACACAC',
-                                        }}
+                                                value={recotdata.provin ? recotdata.provin : ""}
+                                                valuetest={valueinputsearch.provin ? valueinputsearch.provin : ""}
+                                                onChange={(e) => {
+                                                    chaneChangeText(e, "provin"),
+                                                        onChange(e.value,)
+                                                }}
+                                                change={(e) => { onchangeseach(e, 'provin') }}
+                                                style={{
+                                                    border: recotdata.provin ? "" : errors.provin
+                                                        ? '1px solid #FF3434'
+                                                        : '1px solid #ACACAC',
+                                                }}
                                             />
                                         </div>
 
                                     </DropdownItem>
-                                   
+
                                 );
                             }}
                             name="provin"
@@ -642,25 +677,26 @@ let recotda = history.location.state
                                     <DropdownItem
                                         title="Quận/ Huyện"
                                         valide="*"
-                                        >
+                                    >
                                         <div className={style[""]} >
                                             <Dropdownadd placeholder={"Quận/ Huyện"} id="distri" name="distri"
                                                 Options={datadistrict}
                                                 icon='images/icon-statuscenter.svg'
                                                 iconclone='images/icon-close.svg'
-                                                value={recotdata.distri}
-                                        onChange={(e) => { chaneChangeText(e, "distri"); onChange(e.value) }}
-                                        change={(e)=>{onchangeseach(e)}}
-                                        style={{
-                                            border: recotdata.distri ? "" : errors.distri
-                                                ? '1px solid #FF3434'
-                                                : '1px solid #ACACAC',
-                                        }}
+                                                value={recotdata.distri ? recotdata.distri : ""}
+                                                valuetest={valueinputsearch.distri ? valueinputsearch.distri : ""}
+                                                onChange={(e) => { chaneChangeText(e, "distri"); onChange(e.value) }}
+                                                change={(e) => { onchangeseach(e, 'distri') }}
+                                                style={{
+                                                    border: recotdata.distri ? "" : errors.distri
+                                                        ? '1px solid #FF3434'
+                                                        : '1px solid #ACACAC',
+                                                }}
                                             />
                                         </div>
 
                                     </DropdownItem>
-                                    
+
                                 );
                             }}
                             name="distri"
@@ -682,27 +718,28 @@ let recotda = history.location.state
                                 formState, }) => {
                                 return (
                                     <DropdownItem
-                                            title="Phường/ Xã"
+                                        title="Phường/ Xã"
                                         valide="*"
-                                        >
+                                    >
                                         <div className={style[""]} >
                                             <Dropdownadd placeholder={"Phường/ Xã"} id="war" name="war"
                                                 Options={Optionsward}
                                                 icon='images/icon-statuscenter.svg'
                                                 iconclone='images/icon-close.svg'
-                                                    value={recotdata.war}
-                                        onChange={(e) => { chaneChangeText(e, "war"); onChange(e.value); }}
-                                        change={(e)=>{onchangeseach(e)}}
-                                        style={{
-                                            border: recotdata.war ? "" : errors.war
-                                                ? '1px solid #FF3434'
-                                                : '1px solid #ACACAC',
-                                        }}
+                                                value={recotdata.war ? recotdata.war : ""}
+                                                valuetest={valueinputsearch.war ? valueinputsearch.war : ""}
+                                                onChange={(e) => { chaneChangeText(e, "war"); onChange(e.value); }}
+                                                change={(e) => { onchangeseach(e, 'war') }}
+                                                style={{
+                                                    border: recotdata.war ? "" : errors.war
+                                                        ? '1px solid #FF3434'
+                                                        : '1px solid #ACACAC',
+                                                }}
                                             />
                                         </div>
 
                                     </DropdownItem>
-                                    
+
                                 );
                             }}
                             name="war"
@@ -726,24 +763,24 @@ let recotda = history.location.state
                         errors={errors}
                     ></ItemInput>
                     <DropdownItem
-                                           title="Trạng thái"
-                                        >
-                                        <div className={style[""]} >
-                                            <Dropdownadd placeholder={"Giao Dịch"} id="status" name="status"
-                                                Options={Optionstatus}
-                                                icon='images/icon-statuscenter.svg'
-                                                iconclone='images/icon-close.svg'
-                                                value={recotdata.status?(recotdata.status == 2 ? 'Tạm Dừng' : 'Giao dịch'):""}
-                                                
-                                                 onChange={(e) => chaneChangeText(e,"status")}
-                                        
-                                            >
-                                            <span>{getstatustext(recotdata.status) ?? "Trạng thái"}</span>
-                                            </Dropdownadd>
-                                        </div>
-                                        
-                                    </DropdownItem>
-                    
+                        title="Trạng thái"
+                    >
+                        <div className={style[""]} >
+                            <Dropdownadd placeholder={"Giao Dịch"} id="status" name="status"
+                                Options={Optionstatus}
+                                icon='images/icon-statuscenter.svg'
+                                iconclone='images/icon-close.svg'
+                                value={recotdata.status ? (recotdata.status == 2 ? 'Tạm Dừng' : 'Giao dịch') : ""}
+
+                                onChange={(e) => chaneChangeText(e, "status")}
+
+                            >
+                                <span>{getstatustext(recotdata.status) ?? "Trạng thái"}</span>
+                            </Dropdownadd>
+                        </div>
+
+                    </DropdownItem>
+
 
                 </div>
 

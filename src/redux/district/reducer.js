@@ -8,13 +8,12 @@ let initialState = {
     districtData: {
         loading: false,
         district: {}
-        
+
     },
-    
+
 };
 
-const AppReducer = (state = initialState, action) =>
-{
+const AppReducer = (state = initialState, action) => {
     switch (action.type) {
         case AppAction.LOADING_APP_START:
             return {
@@ -37,7 +36,7 @@ const AppReducer = (state = initialState, action) =>
                 loadingAppPopup: false,
             };
         case AppAction.FETCH_GET_DISTRICT:
-
+            
             return {
                 ...state,
                 districtData: {
@@ -46,7 +45,6 @@ const AppReducer = (state = initialState, action) =>
                 },
             };
         case AppAction.FETCH_GET_DISTRICT_SUCCESS:
-
             return {
                 ...state,
                 districtData: {
@@ -55,7 +53,29 @@ const AppReducer = (state = initialState, action) =>
                     loading: false,
                 },
             };
+        case AppAction.FETCH_GET_DISTRICT_ID:
            
+            return {
+                ...state,
+                districtData: {
+                    ...state.districtData,
+                    // distridatapro: iddistricit,
+                    loading: false,
+                },
+            };
+        case AppAction.FETCH_GET_DISTRICT_ID_SUCCESS:
+            
+            return {
+                ...state,
+                districtData: {
+                    ...state.districtData,
+                    districtID: action.payload,
+                    loading: false,
+                },
+            };
+            
+            
+
 
         default:
             return {
